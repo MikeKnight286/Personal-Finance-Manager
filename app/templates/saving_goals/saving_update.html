@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Update Saving Goal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Update Saving Goal</h2>
+    <form action="{{ url_for('saving_goals_bp.update', goal_id=saving_goal.id) }}" method="post">
+        <div class="form-group">
+            <label for="goal_name">Goal Name:</label>
+            <input type="text" id="goal_name" name="goal_name" required class="form-control" value="{{ saving_goal.goal_name }}">
+        </div>
+        
+        <div class="form-group">
+            <label for="target_amount">Target Amount:</label>
+            <input type="number" id="target_amount" name="target_amount" step="0.01" required class="form-control" value="{{ saving_goal.target_amount }}">
+        </div>
+        
+        <div class="form-group">
+            <label for="current_amount">Current Amount:</label>
+            <input type="number" id="current_amount" name="current_amount" step="0.01" class="form-control" value="{{ saving_goal.current_amount }}">
+        </div>
+        
+        <div class="form-group">
+            <label for="target_date">Target Date:</label>
+            <input type="date" id="target_date" name="target_date" required class="form-control" value="{{ formatted_date }}">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description (Optional):</label>
+            <textarea id="description" name="description" class="form-control">{{ saving_goal.description }}</textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update Goal</button>
+    </form>
+    <!-- Flash Messages Display Area -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flash-messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

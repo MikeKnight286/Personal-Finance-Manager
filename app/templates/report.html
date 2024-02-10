@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Transaction Reports{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Reports</h2>
+    <button onclick="showMonthly()">Monthly Report</button>
+    <button onclick="showDaily()">Daily Report</button>
+
+    <!-- Display Monthly or Daily Reports -->
+    <div id="monthlyReport" style="display:none;">
+        <h3>Monthly Transactions</h3>
+        {% if monthly_transactions %}
+            <ul>
+                {% for transaction in monthly_transactions %}
+                    <li>{{ transaction.date.strftime('%Y-%m-%d') }}: {{ transaction.type }} - {{ transaction.category }} - ${{ transaction.amount }} - {{ transaction.description }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No monthly transactions found.</p>
+        {% endif %}
+        <!-- Add a button to send the report -->
+        <a href="{{ url_for('report_bp.send_report', report_type='monthly') }}" class="btn btn-info">Send Me This Monthly Report</a>
+    </div>
+
+    <div id="dailyReport" style="display:none;">
+        <h3>Daily Transactions</h3>
+        {% if daily_transactions %}
+            <ul>
+                {% for transaction in daily_transactions %}
+                    <!-- Include the time in the display format -->
+                    <li>{{ transaction.date.strftime('%Y-%m-%d %I:%M %p') }}: {{ transaction.type }} - {{ transaction.category }} - ${{ transaction.amount | round(2) }} - {{ transaction.description }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No daily transactions found.</p>
+        {% endif %}
+        <!-- Add a button to send the report -->
+        <a href="{{ url_for('report_bp.send_report', report_type='daily') }}" class="btn btn-info">Send Me This Daily Report</a>
+    </div>    
+
+    <!-- Report Preferences Form -->
+    <form action="{{ url_for('report_bp.report_preferences') }}" method="POST">
+        {{ form.hidden_tag() }} 
+
+        <h3>Report Preferences</h3>
+        
+        <!-- Daily Report Preferences -->
+        <div>
+            {{ form.receive_daily_report.label }}
+            {{ form.receive_daily_report }}
+            {{ form.daily_report_time.label }}
+            {{ form.daily_report_time }}
+        </div>
+        
+        <!-- Monthly Report Preferences -->
+        <div>
+            {{ form.receive_monthly_report.label }}
+            {{ form.receive_monthly_report }}
+            {{ form.monthly_report_date.label }}
+            {{ form.monthly_report_date }}
+        </div>
+                
+        <button type="submit">Save Preferences</button>
+    </form>
+
+    <!-- Flash Messages Display Area -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flash-messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+
+<script>
+function showMonthly() {
+    document.getElementById('monthlyReport').style.display = 'block';
+    document.getElementById('dailyReport').style.display = 'none';
+}
+
+function showDaily() {
+    document.getElementById('dailyReport').style.display = 'block';
+    document.getElementById('monthlyReport').style.display = 'none';
+}
+</script>
+{% endblock %}

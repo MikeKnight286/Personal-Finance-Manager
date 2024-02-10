@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Saving Goals{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Saving Goals</h2>
+    <a href="{{ url_for('saving_goals_bp.create') }}" class="btn btn-primary">Add New Goal</a>
+    <div class="saving-goals-list">
+        {% if saving_goals %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Goal Name</th>
+                        <th>Target Amount</th>
+                        <th>Current Amount</th>
+                        <th>Target Date</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for goal in saving_goals %}
+                        <tr>
+                            <td>{{ goal.goal_name }}</td>
+                            <td>${{ goal.target_amount | round(2) }}</td>
+                            <td>${{ goal.current_amount | round(2) }}</td>
+                            <td>{{ goal.target_date.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ goal.description }}</td>
+                            <td>
+                                <a href="{{ url_for('saving_goals_bp.update', goal_id=goal.id) }}" class="btn btn-sm btn-info">Edit</a>
+                                <form action="{{ url_for('saving_goals_bp.delete', goal_id=goal.id) }}" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No saving goals found.</p>
+        {% endif %}
+    </div>
+    <!-- Flash Messages Display Area -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flash-messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

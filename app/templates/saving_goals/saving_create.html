@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Saving Goal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Add New Saving Goal</h2>
+    <form action="{{ url_for('saving_goals_bp.create') }}" method="post">
+        <div class="form-group">
+            <label for="goal_name">Goal Name:</label>
+            <input type="text" id="goal_name" name="goal_name" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="target_amount">Target Amount:</label>
+            <input type="number" id="target_amount" name="target_amount" step="0.01" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="current_amount">Current Amount:</label>
+            <input type="number" id="current_amount" name="current_amount" step="0.01" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="target_date">Target Date:</label>
+            <input type="date" id="target_date" name="target_date" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description (Optional):</label>
+            <textarea id="description" name="description" class="form-control"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Add Goal</button>
+    </form>
+    <!-- Flash Messages Display Area -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flash-messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

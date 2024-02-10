@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Personal Finance Tracker{% endblock %}
+
+{% block content %}
+<div class="home-content">
+    <h2>Welcome to Your Personal Finance Tracker</h2>
+    <p>Manage your finances with ease, track your spending, and achieve your savings goals.</p>
+    
+    <!-- Quick Stats Section -->
+    
+    <!-- Features Section -->
+    <section class="features">
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Dashboard:</strong> Overview of your financial status.</li>
+            <li><strong>Add Transaction:</strong> Track income and expenses.</li>
+            <li><strong>Reports:</strong> Detailed spending habits analysis.</li>
+            <li><strong>Savings Goals:</strong> Set and monitor progress towards goals.</li>
+        </ul>
+    </section>
+
+    <!-- Call to Action for New Users -->
+    <section class="get-started">
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('add_record_bp.add_record') }}" class="btn btn-primary">Start Tracking Your Finances</a>
+    <!-- Or Redirect to Transaction Record Page for Old Users -->
+        {% else %}
+        <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Register to Start Tracking Your Finances</a>
+        {% endif %}
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h3>Frequently Asked Questions</h3>
+        <div class="question">
+            <h4>How do I start tracking my expenses?</h4>
+            <p>Simply click on the 'Add Your First Transaction' button and fill in the details of your expense or income.</p>
+        </div>
+        <!-- more FAQs here -->
+    </section>
+</div>
+{% endblock %}
