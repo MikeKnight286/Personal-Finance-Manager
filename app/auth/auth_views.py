@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
-from . import auth_bp  # Using the Blueprint from your auth package
+from . import auth_bp  # Using the Blueprint from auth package
 from app import db
 from app.models.users_model import User  
 
@@ -28,11 +28,10 @@ def logout():
     logout_user()
     return redirect(url_for('home_bp.home')) # Redirecting to home after logout
 
-
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('dashboard_bp.dashboard'))
+        return redirect(url_for('dashboard_bp.dashboard')) # Redirecting to dashboard if user is registered
 
     if request.method == 'POST':
         email = request.form.get('email')
@@ -44,7 +43,7 @@ def register():
             flash('Email already registered.')
             return redirect(url_for('auth.register'))
 
-        # Create a new user with the form data. Hash the password so the plaintext version isn't saved.
+        # Create a new user with the form data. Hash the password so the plaintext version isn't saved for user privacy
         new_user = User(email=email, password=generate_password_hash(password, method='sha256'))
 
         # Add the new user to the database

@@ -3,6 +3,16 @@
 {% block title %}Dashboard - Personal Finance Tracker{% endblock %}
 
 {% block content %}
+<div class="dashboard">
     <h2>Dashboard</h2>
-    <p>Welcome to your dashboard.</p>
+
+    <!-- Financial Health Overview -->
+    <div class="financial-overview">
+        <h3>Financial Health Overview</h3>
+        <p><strong>Total Income this Month:</strong> ${{ total_income }}</p>
+        <p><strong>Total Expenses this Month:</strong> ${{ total_expenses }}</p>
+        <p><strong>Net Cash Flow this Month:</strong> ${{ net_cash_flow }}</p>
+    </div>
+
+</div>
 {% endblock %}

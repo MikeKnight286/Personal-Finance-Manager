@@ -1,10 +1,5 @@
 from celery import Celery
 from flask import Flask
-import os
-
-# Ensure environment variables are loaded, might be redundant if already loaded elsewhere
-from dotenv import load_dotenv
-load_dotenv()
 
 def make_celery(app: Flask) -> Celery:
     celery = Celery(app.import_name, broker=app.config['broker_url'])

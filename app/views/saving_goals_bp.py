@@ -14,6 +14,7 @@ def index():
 
 @saving_goals_bp.route('/create', methods=['GET', 'POST'])
 @login_required
+# Create saving goals
 def create():
     if request.method == 'POST':
         goal_name = request.form.get('goal_name')
@@ -41,6 +42,7 @@ def create():
 
 @saving_goals_bp.route('/<int:goal_id>/update', methods=['GET', 'POST'])
 @login_required
+# Update saving goals
 def update(goal_id):
     saving_goal = SavingGoal.query.get_or_404(goal_id)
 
@@ -66,6 +68,7 @@ def update(goal_id):
 
 @saving_goals_bp.route('/<int:goal_id>/delete', methods=['POST'])
 @login_required
+# Delete saving goals
 def delete(goal_id):
     saving_goal = SavingGoal.query.get_or_404(goal_id)
     db.session.delete(saving_goal)

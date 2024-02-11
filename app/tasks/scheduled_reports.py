@@ -5,15 +5,20 @@ from app.models.users_model import User
 from app.models.transaction_model import Transaction
 from app.views.report_bp import generate_report_html, send_email 
 
+# Register tasks for Celery app
 def register_report_tasks(celery):
     @celery.task(name='app.tasks.send_scheduled_reports', bind=True)
     def send_scheduled_reports(self):
         with get_app_context():
             timezone = pytz.timezone('Asia/Tokyo') # Change to desired timezone
+
+            # Call current time
             now = datetime.now(timezone)
             current_hour = now.hour
             current_minute = now.minute
             current_day = now.day
+
+            # Check users' preferences
             users = User.query.all()
             for user in users:
                 if user.receive_daily_report and user.daily_report_time:

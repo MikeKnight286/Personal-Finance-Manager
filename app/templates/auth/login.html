@@ -5,6 +5,7 @@
 {% block content %}
 <div class="container">
     <h2>Login</h2>
+    <!-- For flashing messages if exist -->
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for message in messages %}
@@ -12,6 +13,8 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
+
+    <!-- For logging in -->
     <form action="{{ url_for('auth.login') }}" method="post">
         <div class="form-group">
             <label for="email">Email:</label>
