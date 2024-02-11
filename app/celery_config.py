@@ -1,10 +1,8 @@
-# celery_config.py
-from celery import Celery
-from dotenv import load_dotenv
-import os
+from celery.schedules import crontab
 
-load_dotenv()
-
-def make_celery(app_name, broker, backend):
-    celery = Celery(app_name, broker=broker, backend=backend)
-    return celery
+CELERY_BEAT_SCHEDULE = {
+    'send-scheduled-reports-every-minute': {
+        'task': 'app.tasks.send_scheduled_reports',  
+        'schedule': crontab(minute='*'),  # Run the task at every minute
+    },
+}

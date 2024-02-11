@@ -78,7 +78,7 @@ def send_report():
     flash(f"{report_title} sent successfully.")
     return redirect(url_for('report_bp.report'))
 
-@report_bp.route('/report_preferences', methods=['GET', 'POST'])
+@report_bp.route('/', methods=['GET', 'POST'])
 @login_required
 def report_preferences():
     form = ReportPreferencesForm(request.form, obj=current_user)
@@ -87,14 +87,8 @@ def report_preferences():
         current_user.receive_daily_report = form.receive_daily_report.data
 
         if current_user.receive_daily_report and form.daily_report_time.data:
-            try:
-                current_user.daily_report_time = form.daily_report_time.data
-                flash(f'Set to receive daily reports at {current_user.daily_report_time.strftime("%H:%M")}.')
-            except ValueError:
-                # In case the time_str doesn't match the expected format '%H:%M'
-                flash('Invalid format for daily report time. Please use HH:MM format.', 'error')
-                # Optionally, redirect back to the form to correct the error
-                return redirect(url_for('report_bp.report_preferences'))
+            current_user.daily_report_time = form.daily_report_time.data
+            flash(f'Set to receive daily reports at {current_user.daily_report_time.strftime("%H:%M")}.')
         else:
             current_user.daily_report_time = None
             flash('Opted out of daily reports.')
@@ -110,6 +104,6 @@ def report_preferences():
 
         db.session.commit()
         flash('Your report preferences have been updated.')
-        return redirect(url_for('report_bp.report_preferences'))
+        return redirect(url_for('report_bp.report'))
 
     return render_template('report.html', form=form)
