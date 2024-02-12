@@ -2,17 +2,99 @@
 
 {% block title %}Dashboard - Personal Finance Tracker{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="dashboard">
     <h2>Dashboard</h2>
+    <!-- Time Range Selection -->
+    <div class="time-range-selection">
+        <form method="get" action="{{ url_for('dashboard_bp.dashboard') }}">
+            <label for="range">Select Time Range:</label>
+            <select name="range" id="range">
+                <option value="this_year" {{ 'selected' if range_type == 'this_year' else '' }}>This Year</option>
+                <option value="this_month" {{ 'selected' if range_type == 'this_month' else '' }}>This Month</option>
+                <option value="this_week" {{ 'selected' if range_type == 'this_week' else '' }}>This Week</option>
+                <option value="today" {{ 'selected' if range_type == 'today' else '' }}>Today</option>
+            </select>
+            <button type="submit">Show</button>
+        </form>
+    </div>
 
     <!-- Financial Health Overview -->
     <div class="financial-overview">
-        <h3>Financial Health Overview</h3>
-        <p><strong>Total Income this Month:</strong> ${{ total_income }}</p>
-        <p><strong>Total Expenses this Month:</strong> ${{ total_expenses }}</p>
-        <p><strong>Net Cash Flow this Month:</strong> ${{ net_cash_flow }}</p>
+        <h3>Financial Health Overview ({{ range_type.replace('_', ' ').title() }}) </h3>
+        <p><strong>Total Income:</strong> ${{ total_income }}</p>
+        <p><strong>Total Expenses:</strong> ${{ total_expenses }}</p>
+        <p><strong>Net Cash Flow:</strong> ${{ net_cash_flow }}</p>
     </div>
 
+    <!-- Transactions Overview -->
+    <div class="transactions-overview">
+        <h3>Transactions Overview ({{ range_type.replace('_', ' ').title() }}) </h3>
+        <!-- Positive Transactions -->
+        <div class="transactions-overview positive-transactions">
+            <h3>Positive Transactions (Income)</h3>
+            {% if positive_transactions %}
+                <ul>
+                    {% for transaction in positive_transactions %}
+                        <li>{{ transaction.date.strftime("%Y-%m-%d") }}: {{ transaction.category }} - {{ transaction.description }} - ${{ transaction.amount }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No positive transactions found for this period.</p>
+            {% endif %}
+        </div>
+
+        <!-- Negative Transactions -->
+        <div class="transactions-overview negative-transactions">
+            <h3>Negative Transactions (Expenses)</h3>
+            {% if negative_transactions %}
+                <ul>
+                    {% for transaction in negative_transactions %}
+                        <li>{{ transaction.date.strftime("%Y-%m-%d") }}: {{ transaction.category }} - {{ transaction.description }} - ${{ transaction.amount }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No negative transactions found for this period.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Saving Goals Progress -->
+    <div class="saving-goals">
+        <h3>Saving Goals Progress</h3>
+        {% for goal in saving_goals_progress %}
+            <div class="goal">
+                <p>{{ goal.goal_name }}: {{ goal.progress_percentage|round(2) }}% (${{ goal.current_amount }} of ${{ goal.target_amount }})</p>
+                <progress value="{{ goal.current_amount }}" max="{{ goal.target_amount }}"></progress>
+                <p>Days left: {{ goal.days_left }}</p>
+                <p>Suggestion: {{ goal.suggestion }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Spending Breakdown -->
+    <div class="spending-breakdown">
+        <h3>Spending Breakdown by Category</h3>
+        <ul>
+            {% for category, total in spending_by_category %}
+                <li>{{ category }}: ${{ total }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Income Sources -->
+    <div class="income-sources">
+        <h3>Income Sources</h3>
+        <ul>
+            {% for source, total in income_by_source %}
+                <li>{{ source }}: ${{ total }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}

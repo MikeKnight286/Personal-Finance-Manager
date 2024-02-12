@@ -1,0 +1,98 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9; /* Slightly off-white background for contrast */
+}
+
+.dashboard {
+    padding-top: px;
+}
+
+/* Style for the dashboard title */
+.dashboard h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px; /* Add some space below the title */
+    text-align: center; /* Center align the title */
+}
+
+/* Alternating background colors for sections */
+.dashboard > div:nth-child(odd) {
+    background-color: #e8ffe8; /* Light green for odd sections */
+}
+
+.dashboard > div:nth-child(even) {
+    background-color: #b3f8b3; /* Slightly lighter green for even sections */
+}
+
+/* General padding and margins for all sections */
+.dashboard > div {
+    padding: 15px;
+    margin-bottom: 0px; /* Space between sections */
+}
+
+/* Remove default list styles */
+.dashboard ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for list items */
+.dashboard li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 2px; /* Remove gaps between rows */
+    border-left: 5px solid #4CAF50; /* Vibrant green left border for list items */
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for list items */
+.dashboard li:hover {
+    background-color: #e8ffe8;
+}
+
+/* Style for form and select elements */
+.time-range-selection form,
+.time-range-selection select {
+    margin-bottom: 20px;
+}
+
+.time-range-selection select {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+/* Style for the submit button */
+.time-range-selection button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Hover effect for the button */
+.time-range-selection button:hover {
+    background-color: #45a049;
+}
+
+/* Style for progress bars */
+progress {
+    width: 100%;
+    height: 20px;
+    margin-top: 10px;
+}
+
+/* Responsive media query */
+@media (min-width: 768px) {
+    header h1, nav {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    nav ul {
+        float: right;
+    }
+}

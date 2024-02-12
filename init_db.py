@@ -1,5 +1,5 @@
 '''
-Create an actual database later for scalability
+An actual database later for scalability
 '''
 
 from app import db, create_app
