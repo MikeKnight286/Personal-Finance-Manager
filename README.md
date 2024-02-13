@@ -57,22 +57,17 @@ You can register a new account or log in using existing credentials to start usi
 
 ## Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request.
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+No license
 
 ## Contact
 
-Your Name – [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+Bhone Tay Zar Kyaw - bhonetaybusiness286@gmail.com
 
-Project Link: [https://github.com/your-username/your-repo-name](https://github.com/your-username/your-repo-name)
+Project Link: [https://github.com/MikeKnight286/Personal-Finance-Manager](https://github.com/MikeKnight286/Personal-Finance-Manager)
 
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc.
