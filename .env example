@@ -1,0 +1,6 @@
+SECRET_KEY=secret_key
+DATABASE_URI=mysql+pymysql://user:password@localhost/database
+MAIL_USERNAME=example@gmail.com
+MAIL_PASSWORD=mail pass mail pass 
+CELERY_BROKER_URL=redis://localhost:6379/0
+CELERY_RESULT_BACKEND=redis://localhost:6379/0
