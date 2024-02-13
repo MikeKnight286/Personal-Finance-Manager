@@ -1,0 +1,88 @@
+@import url('dashboard.css');
+
+/* Basic reset and consistent font for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style for the container holding the form */
+.container {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the form title */
+.container h2 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Style for input and textarea elements */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Style for the submit button */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* Flash messages styling */
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 600px;
+}
+
+.flash-messages li {
+    background-color: #f2f8f3; /* Light green background */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #4CAF50; /* Green border left */
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    /* Responsive styling for larger screens */
+    .container {
+        padding: 30px;
+    }
+}

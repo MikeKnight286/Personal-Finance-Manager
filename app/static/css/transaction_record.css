@@ -1,0 +1,87 @@
+@import url('dashboard.css');
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; /* Consistent background color */
+}
+
+/* Style for the form title */
+h2 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Form styling */
+#transaction-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#transaction-form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+#transaction-form select,
+#transaction-form input,
+#transaction-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#transaction-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#transaction-form button:hover {
+    background-color: #45a049;
+}
+
+/* Flash messages styling */
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 600px;
+}
+
+.flash-messages li {
+    background-color: #f2f8f3; /* Light green background */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #4CAF50; /* Green border left */
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    /* Responsive styling for larger screens */
+    #transaction-form {
+        padding: 30px;
+    }
+}

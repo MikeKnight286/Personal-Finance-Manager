@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/transaction_record.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
 {% block content %}
 <h2>Add Transaction Record</h2>
 <form id="transaction-form" action="{{ url_for('add_record_bp.add_record') }}" method="post">

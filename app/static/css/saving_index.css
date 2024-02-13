@@ -1,0 +1,129 @@
+/* Import the dashboard styles to maintain consistency */
+@import url('dashboard.css');
+
+/* Reset styles and fonts consistent with other CSS files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style for the main container */
+.container {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the page title */
+.container h2 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for action buttons */
+.btn-primary {
+    display: block;
+    width: max-content;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* Style for the saving goals table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Header styles for table */
+.table thead th {
+    background-color: #e8ffe8; /* Light green background */
+    color: #333;
+}
+
+/* Zebra striping for table rows */
+.table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Light grey for odd rows */
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #e8ffe8; /* Light green for even rows */
+}
+
+/* Style for buttons within table cells */
+.btn-info,
+.btn-danger {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Hover effects for buttons */
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Styles for flash messages */
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.flash-messages li {
+    background-color: #f2f8f3; /* Light green background */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #4CAF50; /* Green border left */
+    text-align: center;
+}
+
+/* Responsive styling */
+@media (min-width: 768px) {
+    .btn-primary {
+        margin-bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

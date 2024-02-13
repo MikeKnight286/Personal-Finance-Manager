@@ -1,0 +1,184 @@
+/* Import the dashboard styles to maintain consistency */
+@import url('dashboard.css');
+
+/* Style for the container */
+.container {
+    padding-top: 20px;
+}
+
+/* Style for report headings */
+.container h2, .container h3 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for buttons */
+.container button,
+.container .btn-info {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.container button:hover,
+.container .btn-info:hover {
+    background-color: #45a049;
+}
+/* Style for the report sections */
+#monthlyReport, #dailyReport {
+    background-color: #e8ffe8;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Alternating list item styles within the reports */
+#monthlyReport ul li, #dailyReport ul li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 2px;
+    border-left: 5px solid #4CAF50;
+    transition: background-color 0.3s;
+}
+
+#monthlyReport ul li:hover, #dailyReport ul li:hover {
+    background-color: #e8ffe8;
+}
+
+/* Style adjustments for report preference form */
+form.report-preferences {
+    background-color: #f0fff0;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form.report-preferences > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e8ffe8;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form.report-preferences label {
+    flex: 1;
+    margin-right: 20px;
+}
+
+form.report-preferences .daily-report label {
+    margin-right: 40px;
+}
+
+form.report-preferences input[type="checkbox"],
+form.report-preferences select {
+    flex: 2;
+}
+
+/* Style for the button within the preferences form */
+form.report-preferences button {
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+/* Styles for daily and monthly report sections */
+#monthlyReport,
+#dailyReport {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style adjustments for individual report items */
+#monthlyReport ul,
+#dailyReport ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Style for buttons in the report sections */
+#monthlyReport .btn,
+#dailyReport .btn {
+    align-self: center;
+    padding: 10px 30px;
+}
+
+/* Flash messages styling */
+.flash-messages {
+    background-color: #dff0d8;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.flash-messages li {
+    color: #3c763d;
+}
+
+/* Reset styles for form elements */
+input[type='checkbox'],
+input[type='time'],
+select {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Ensure label and form elements align nicely */
+.preference-section label {
+    display: inline-block;
+    margin-right: 50zpx;
+}
+
+.preference-section label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.preference-section div {
+    display: inline-block;
+    margin-bottom: 10px; /* Adjust as necessary */
+}
+
+/* Clearfix for the parent element if necessary */
+.report-preferences::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Responsive design adjustments */
+@media (min-width: 768px) {
+    /* Layout adjustments for larger screens */
+    form.report-preferences > div {
+        flex-direction: row;
+    }
+
+    #monthlyReport,
+    #dailyReport {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    #monthlyReport ul,
+    #dailyReport ul {
+        flex: 1;
+    }
+
+    #monthlyReport .btn-info,
+    #dailyReport .btn-info {
+        margin-left: 20px;
+    }
+}

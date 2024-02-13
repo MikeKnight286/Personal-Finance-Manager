@@ -1,10 +1,57 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/report.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
 {% block title %}Transaction Reports{% endblock %}
 
 {% block content %}
 <div class="container">
     <h2>Reports</h2>
+    <!-- Report Preferences Form -->
+    <form action="{{ url_for('report_bp.report_preferences') }}" method="POST" class="report-preferences">
+        {{ form.hidden_tag() }} 
+
+        <h3>Report Preferences</h3>
+        
+        <!-- Daily Report Preferences -->
+        <div class="preference-section">
+            <div class="daily-report">
+                {{ form.receive_daily_report.label }}
+                {{ form.receive_daily_report }}
+            </div>
+            <div>
+                {{ form.daily_report_time.label }}
+                {{ form.daily_report_time }}
+            </div>
+        </div>
+        <div class="preference-section monthly-report">
+            <div>
+                {{ form.receive_monthly_report.label }}
+                {{ form.receive_monthly_report }}
+            </div>
+            <div>
+                {{ form.monthly_report_date.label }}
+                {{ form.monthly_report_date }}
+            </div>
+        </div>
+                
+        <button type="submit">Save Preferences</button>
+    </form>
+
+    <!-- Flash Messages Display Area -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flash-messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
     <button onclick="showMonthly()">Monthly Report</button>
     <button onclick="showDaily()">Daily Report</button>
 
@@ -21,7 +68,7 @@
             <p>No monthly transactions found.</p>
         {% endif %}
         <!-- Add a button to send the report -->
-        <a href="{{ url_for('report_bp.send_report', report_type='monthly') }}" class="btn btn-info">Send Me This Monthly Report</a>
+        <a href="{{ url_for('report_bp.send_report', report_type='monthly') }}" class="btn btn-info">Send Me This Monthly Report Via Email</a>
     </div>
 
     <div id="dailyReport" style="display:none;">
@@ -37,44 +84,8 @@
             <p>No daily transactions found.</p>
         {% endif %}
         <!-- Add a button to send the report -->
-        <a href="{{ url_for('report_bp.send_report', report_type='daily') }}" class="btn btn-info">Send Me This Daily Report</a>
+        <a href="{{ url_for('report_bp.send_report', report_type='daily') }}" class="btn btn-info">Send Me This Daily Report Via Email</a>
     </div>    
-
-    <!-- Report Preferences Form -->
-    <form action="{{ url_for('report_bp.report_preferences') }}" method="POST">
-        {{ form.hidden_tag() }} 
-
-        <h3>Report Preferences</h3>
-        
-        <!-- Daily Report Preferences -->
-        <div>
-            {{ form.receive_daily_report.label }}
-            {{ form.receive_daily_report }}
-            {{ form.daily_report_time.label }}
-            {{ form.daily_report_time }}
-        </div>
-        
-        <!-- Monthly Report Preferences -->
-        <div>
-            {{ form.receive_monthly_report.label }}
-            {{ form.receive_monthly_report }}
-            {{ form.monthly_report_date.label }}
-            {{ form.monthly_report_date }}
-        </div>
-                
-        <button type="submit">Save Preferences</button>
-    </form>
-
-    <!-- Flash Messages Display Area -->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul class="flash-messages">
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    {% endwith %}
 </div>
 
 <script>

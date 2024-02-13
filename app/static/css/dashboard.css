@@ -5,7 +5,7 @@ body {
 }
 
 .dashboard {
-    padding-top: px;
+    padding-top: 0px;
 }
 
 /* Style for the dashboard title */
@@ -18,11 +18,11 @@ body {
 
 /* Alternating background colors for sections */
 .dashboard > div:nth-child(odd) {
-    background-color: #e8ffe8; /* Light green for odd sections */
+    background-color: #b3f8b3; /* Light green for odd sections */
 }
 
 .dashboard > div:nth-child(even) {
-    background-color: #b3f8b3; /* Slightly lighter green for even sections */
+    background-color: #e8ffe8; /* Green for even sections */
 }
 
 /* General padding and margins for all sections */
@@ -50,6 +50,23 @@ body {
 /* Hover effect for list items */
 .dashboard li:hover {
     background-color: #e8ffe8;
+}
+
+/* Specific background color for negative-transaction */
+.negative-transactions {
+    background-color: rgb(254, 122, 122) !important;
+}
+
+.negative-transactions li{
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 2px; /* Remove gaps between rows */
+    border-left: 5px solid #d14545; /* Vibrant red left border for list items */
+    transition: background-color 0.3s;
+}
+
+.negative-transactions li:hover{
+    background-color: rgb(252, 175, 175);
 }
 
 /* Style for form and select elements */

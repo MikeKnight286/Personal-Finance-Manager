@@ -1,0 +1,101 @@
+/* Import the dashboard styles to maintain consistency */
+@import url('dashboard.css');
+
+.home-content {
+    padding-top: 0px;
+}
+
+.home-content h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.home-content h3,p{
+    text-align: center;
+}
+/* Styling for the key features section */
+.features {
+    padding: 15px;
+    background-color: #e8ffe8;
+    margin-bottom: 20px; /* Space between sections */
+}
+
+.features h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.features ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 2px;
+    border-left: 5px solid #4CAF50;
+    transition: background-color 0.3s;
+}
+
+.features li:hover {
+    background-color: #e8ffe8;
+}
+
+/* Styling for the get-started section */
+.get-started {
+    padding: 15px;
+    background-color: #b3f8b3;
+    text-align: center; /* Center the button */
+    margin-bottom: 20px; /* Space between sections */
+}
+
+.get-started a.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.get-started a.btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the FAQ section */
+.faq {
+    padding: 15px;
+    background-color: #e8ffe8;
+    margin-bottom: 20px; /* Space between sections */
+}
+
+.faq h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.faq .question {
+    margin-bottom: 10px;
+}
+
+.faq .question h4 {
+    font-weight: bold;
+}
+
+.faq .question p {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 2px;
+    border-left: 5px solid #4CAF50;
+    text-align: left !important;
+}
+
+.faq .question p:hover {
+    background-color: #e8ffe8;
+}
+
