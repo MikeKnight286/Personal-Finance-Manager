@@ -15,11 +15,11 @@ To get the application running locally on your system, please follow the steps b
 
 1. Clone the repository to your local machine.
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/MikeKnight286/Personal-Finance-Manager
    ```
 2. Navigate to the application directory.
    ```bash
-   cd your-repo-name
+   cd Personal-Finance-Manager
    ```
 3. Install the required dependencies.
    ```bash
