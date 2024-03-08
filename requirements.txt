@@ -6,6 +6,7 @@ Flask-SQLAlchemy==3.0.5
 PyMySQL==1.0.2
 python-dotenv
 Flask-Mail==0.9.1
-Celery==5.3
+Celery
+kombu
 Redis==5.0.1
 pytz
